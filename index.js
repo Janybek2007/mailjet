@@ -16,13 +16,10 @@ app.use(
 app.use(errorMiddleware)
 app.use(express.urlencoded({ extended: true }))
 
-app.get('/json-doc', (req, res) => {
+app.get('/', (req, res) => {
 	res.json(responses)
 })
 
 app.use('/api', require('./routers/app.router'))
-app.get('*', (req, res) => {
-	res.redirect('/json-doc')
-})
 
 app.listen(PORT, console.log(`listening at ${PORT}`))
