@@ -3,9 +3,7 @@ const { body, validationResult } = require('express-validator')
 const router = express.Router()
 const MailService = require('../services/mail.service')
 const ApiError = require('../exceptions/api-error')
-const apiKeyMiddleware = require('../middlewares/apiKeyMiddleware')
 
-router.use(apiKeyMiddleware)
 router.post(
 	'/send-mail',
 	[
