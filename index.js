@@ -3,7 +3,6 @@ const express = require('express')
 const cors = require('cors')
 const errorMiddleware = require('./middlewares/err-middleware')
 const responses = require('./responses/index')
-const apiKeyMiddleware = require('./middlewares/apiKeyMiddleware')
 
 var app = express()
 const PORT = process.env.PORT || 4200
