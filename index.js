@@ -16,7 +16,7 @@ app.use(
 app.use(errorMiddleware)
 app.use(express.urlencoded({ extended: true }))
 
-app.get('/json-doc', (req, res) => {
+app.get('/', (req, res) => {
 	res.json(responses)
 })
 
