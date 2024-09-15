@@ -14,6 +14,7 @@ app.use(
 	})
 )
 app.use(errorMiddleware)
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
