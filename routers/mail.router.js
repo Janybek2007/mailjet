@@ -8,6 +8,7 @@ router.post(
 	'/send-mail',
 	[
 		body('to').isEmail().withMessage('Valid recipient email is required'),
+		body('from').isString().notEmpty().withMessage('From is required'),
 		body('subject').isString().notEmpty().withMessage('Subject is required'),
 		body('html')
 			.optional()
