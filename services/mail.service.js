@@ -25,6 +25,28 @@ class MailService {
 
 		await this.transporter.sendMail(mailOptions)
 	}
+	async sendMailWithSmtp(body) {
+		const { smtp, ...mailData } = body
+		const transporter = nodemailer.createTransport({
+			host: smtp.host,
+			port: parseInt(smtp.port, 10),
+			secure: smtp.port === 465,
+			auth: {
+				user: smtp.user,
+				pass: smtp.pass
+			}
+		})
+
+		const mailOptions = {
+			from: `${mailData.from} <${smtp.user}>`,
+			to: mailData.to,
+			subject: mailData.subject,
+			...(mailData.html && { html: mailData.html }),
+			...(mailData.text && { text: mailData.text })
+		}
+
+		await transporter.sendMail(mailOptions)
+	}
 }
 
 module.exports = new MailService()
